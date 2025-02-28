@@ -6,7 +6,7 @@ defmodule ShaderGenerator.Router do
   plug(Plug.Logger)
 
   # Add CORS support for frontend integration
-  plug(CORSPlug, origin: ["http://localhost:3000", "http://localhost:3001", "https://twotabshadergeneratorcalc.netlify.app/"])
+  plug(CORSPlug, origin: ["http://localhost:3000", "https://twotabshadergeneratorcalc.netlify.app"])
 
   plug(Plug.Parsers,
     parsers: [:json],
