@@ -5,7 +5,11 @@ defmodule ShaderGenerator.Application do
 
   @impl true
   def start(_type, _args) do
-    port = String.to_integer(System.get_env("PORT") || "4000")
+    port =
+      case System.get_env("PORT") do
+        nil -> 4000  # Default to 4000 if PORT is not set
+        port_str -> String.to_integer(port_str)
+      end
 
     children = [
       {Plug.Cowboy, scheme: :http, plug: ShaderGenerator.Router, options: [port: port]}
