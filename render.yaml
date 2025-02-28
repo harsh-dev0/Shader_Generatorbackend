@@ -1,0 +1,15 @@
+services:
+  - name: elixir-backend
+    type: web
+    runtime: elixir
+    plan: free # Or use 'starter' for better performance
+    buildCommand: |
+      mix deps.get
+      mix compile
+    startCommand: |
+      mix run --no-halt
+    envVars:
+      - key: GROQ_API_KEY
+        generateValue: true
+      - key: PORT
+        value: 4000
